@@ -1,22 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Card } from "react-bootstrap";
 
 const Profile = (props) => {
-  const handleName = (e) => {
-    e.preventDefault();
-    alert(`Hello ${props.fullName} `);
-    console.log("The link was clicked.");
-  };
   const styleObject = { color: "red", textAlign: "center" };
   console.log(`props:`, props);
 
   return (
     <>
-      <h1 style={styleObject}> fullName: {props.fullName}</h1>
-      <h2> bio: {props.bio}</h2>
-      <h2> profession: {props.profession}</h2>
-      {props.children}
-      <button onClick={handleName}>Click me</button>
+      <Card style={{ width: "18rem" }}>
+        <Card.Body>
+          <Card.Title style={styleObject}>{props.fullName}</Card.Title>
+          <Card.Subtitle>{props.bio}</Card.Subtitle>
+          <Card.Text>{props.profession}</Card.Text>
+          <Card.Text>{props.children}</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <Card.Text>
+            <button onClick={props.handleName}>Click me</button>
+          </Card.Text>
+        </Card.Footer>
+      </Card>
     </>
   );
 };
